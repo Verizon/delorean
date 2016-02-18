@@ -25,6 +25,15 @@ class ConversionSpec extends FlatSpec with Matchers with PropertyChecks {
     }
   }
 
+  it should "not eagerly evaluate input futures" in {
+    var flag = false
+    def f = Future { flag = true }
+    val t = f.toTask
+
+    Thread.sleep(250)     // ewwwwwwwwwwww
+    flag shouldEqual false
+  }
+
   it should "convert a task to a future that produces the same value" in {
     forAll { str: String =>
       val t = Task now str
