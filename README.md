@@ -39,7 +39,7 @@ There are a few subtle things that are hidden here by the pretty syntax.
 
 ### Pitfalls
 
-There are three major pitfalls here.  First, the `toTask` conversion can only give you a referentially transparent `Task` if you religiously avoid eagerly caching its dispatch receiver.  As a general rule, this isn't a bad idiom:
+There are two major pitfalls here.  First, the `toTask` conversion can only give you a referentially transparent `Task` if you religiously avoid eagerly caching its dispatch receiver.  As a general rule, this isn't a bad idiom:
 
 ```scala
 def f: Future[A] = ???
@@ -50,5 +50,3 @@ val t: Task[A] = f.toTask
 In other words, `f` is a `def` and not a `val`.  With this sort of machinery, `toTask` will give you a reasonable output.  If you eagerly cache its input `Future` though, the results are on your own head.
 
 Second, `unsafeToFuture` *immediately* runs the input `Task` (as mentioned above).  There really isn't anything else that could be done here, since `Future` is eager, but it's worth mentioning.  Additionally, `unsafeToFuture` makes no attempt to thread-shift the input `Task`, since in general this is not possible (or necessarily desirable).  The resulting `Future` will be on the appropriate thread pool, and it is certainly safe to `flatMap` on said `Future` and treat it normally, but the computation itself will be run on whatever thread scheduler the `Task` was composed against.
-
-Finally, `unsafeToFuture` does have the potential to discard exceptions under certain circumstances.  Exceptions raised by the constituent `Task` are most definitely forwarded along to `Future` (`toTask` also does this in the opposite direction for errors in `Future`), but `Future` has some rather dubious invalidation mechanisms which can cause problems.  Specifically, it is possible to run a `Future` with a timeout parameter.  If you do this, the timeout will be forwarded to the backing `Promise` inside of `unsafeToFuture`.  If the timeout is hit and the `Task` completes *afterward*, there will be an `IllegalStateException` raised inside of `unsafeToFuture` which at present will crash a thread.  This is… probably not the right thing to do.  I would really like to take some sort of implicit handler to give users the ability to recover from this situation in a continuation, but it's not there right now.

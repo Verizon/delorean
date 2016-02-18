@@ -26,8 +26,8 @@ package object delorean {
       val p = Promise[A]()
 
       self runAsync {
-        case \/-(a) => p.complete(Success(a)); ()     // potentially discards IllegalStateException if future was set to time out
-        case -\/(t) => p.complete(Failure(t)); ()     // potentially discards IllegalStateException if future was set to time out
+        case \/-(a) => p.complete(Success(a)); ()
+        case -\/(t) => p.complete(Failure(t)); ()
       }
 
       p.future
