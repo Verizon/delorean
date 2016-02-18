@@ -10,7 +10,8 @@ teamName in Global := Some("inf")
 
 projectName in Global := Some("delorean")
 
-lazy val delorean = project.in(file(".")).aggregate(docs, core)
+// removing docs for now, as there are none
+lazy val delorean = project.in(file(".")).aggregate(core)
 
 lazy val core = project
 
