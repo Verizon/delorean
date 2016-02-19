@@ -1,4 +1,3 @@
-package inf
 
 import scala.concurrent.{ExecutionContext, Future, Promise}
 import scala.util.{Failure, Success}

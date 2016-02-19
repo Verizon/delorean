@@ -13,7 +13,7 @@ libraryDependencies += "verizon.inf.delorean" %% "core" % "1.0.+"
 Keep it simple:
 
 ```scala
-import inf.delorean._       // conversions are in the package object
+import delorean._       // conversions are in the package object
 
 val f: Future[Foo] = ...
 val t: Task[Foo] = f.toTask
