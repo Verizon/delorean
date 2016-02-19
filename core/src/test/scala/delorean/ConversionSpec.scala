@@ -1,4 +1,4 @@
-package inf.delorean
+package delorean
 
 import scala.concurrent._
 import scala.concurrent.duration._
