@@ -1,2 +1,3 @@
 + Initial release
 + Supports both Scala 2.11 and Scala 2.10
++ Removed build customisations that are now in the main sbt-verizon plugin

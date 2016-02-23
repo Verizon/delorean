@@ -14,8 +14,6 @@ scalaVersion in Global := "2.11.7"
 
 crossScalaVersions in Global := Seq(scalaVersion.value, "2.10.6")
 
-releaseCrossBuild := false
-
 // removing docs for now, as there are none
 lazy val delorean = project.in(file(".")).aggregate(core)
 
