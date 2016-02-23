@@ -1,1 +1,2 @@
 + Initial release
++ Supports both Scala 2.11 and Scala 2.10
