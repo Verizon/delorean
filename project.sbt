@@ -10,6 +10,10 @@ teamName in Global := Some("inf")
 
 projectName in Global := Some("delorean")
 
+scalaVersion in Global := "2.11.7"
+
+crossScalaVersions in Global := Seq(scalaVersion.value, "2.10.6")
+
 // removing docs for now, as there are none
 lazy val delorean = project.in(file(".")).aggregate(core)
 

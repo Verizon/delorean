@@ -8,6 +8,8 @@ Trivial library for correct and stable conversions between `Task` and `Future`. 
 libraryDependencies += "verizon.inf.delorean" %% "core" % "1.0.+"
 ```
 
+Cross builds are available for both 2.10 and 2.11.
+
 ## Usage
 
 Keep it simple:
