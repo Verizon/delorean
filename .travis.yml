@@ -20,8 +20,17 @@ script:
 after_success:
   - find $HOME/.sbt -name "*.lock" | xargs rm
   - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
+  - "bash <(curl -s https://codecov.oncue.verizon.net/bash) -u https://codecov.oncue.verizon.net -r $TRAVIS_REPO_SLUG -t 1620fee1-1ee8-4457-865b-6545a55c4266"
 
 cache:
   directories:
     - $HOME/.ivy2/cache
     - $HOME/.sbt/boot/scala-$TRAVIS_SCALA_VERSION
+
+notifications:
+  email:
+    recipients:
+      - timothy.m.perrett@one.verizon.com
+      - daniel.spiewak@one.verizon.com
+    on_success: change
+    on_failure: always
