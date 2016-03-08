@@ -42,4 +42,18 @@ class ConversionSpec extends FlatSpec with Matchers with PropertyChecks {
       Await.result(f, Duration.Inf) shouldEqual str
     }
   }
+
+  it should "convert a task to a future that produces the same error" in {
+    case object TestException extends Exception
+
+    val t = Task fail TestException
+    val f = t.unsafeToFuture
+
+    try {
+      Await.result(f, Duration.Inf)
+    } catch {
+      case TestException => true shouldEqual true     // I need a pass() function
+      case _: Throwable => fail()
+    }
+  }
 }
