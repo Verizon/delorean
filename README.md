@@ -5,7 +5,7 @@
 Trivial library for correct and stable conversions between `Task` and `Future`.  To use:
 
 ```sbt
-libraryDependencies += "verizon.inf.delorean" %% "core" % "1.0.+"
+libraryDependencies += "verizon.inf.delorean" %% "core" % "1.1.+"
 ```
 
 Cross builds are available for both 2.10 and 2.11.
