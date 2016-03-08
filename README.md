@@ -52,3 +52,4 @@ val t: Task[A] = f.toTask
 In other words, `f` is a `def` and not a `val`.  With this sort of machinery, `toTask` will give you a reasonable output.  If you eagerly cache its input `Future` though, the results are on your own head.
 
 Second, `unsafeToFuture` *immediately* runs the input `Task` (as mentioned above).  There really isn't anything else that could be done here, since `Future` is eager, but it's worth mentioning.  Additionally, `unsafeToFuture` makes no attempt to thread-shift the input `Task`, since in general this is not possible (or necessarily desirable).  The resulting `Future` will be on the appropriate thread pool, and it is certainly safe to `flatMap` on said `Future` and treat it normally, but the computation itself will be run on whatever thread scheduler the `Task` was composed against.
+
