@@ -10,10 +10,10 @@ libraryDependencies += "verizon.inf.delorean" %% "core" % "1.1.+"
 
 Cross builds are available for both 2.10 and 2.11.
 
-Note that if your project is not already on the new iptv architecture, you will need to explicitly add the following resolver:
+Note that if your project is not already on the new iptv architecture, you will need to explicitly add the following line to your `project.sbt` file:
 
 ```sbt
-resolvers += "internal.nexus" at "http://nexus.oncue.verizon.net/nexus/content/groups/internal"
+resolvers in ThisBuild += "internal.nexus" at "http://nexus.oncue.verizon.net/nexus/content/groups/internal"
 ```
 
 ## Usage
