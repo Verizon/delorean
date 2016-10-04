@@ -1,5 +1,4 @@
 language: scala
-
 scala:
   - 2.10.6
   - 2.11.7
@@ -9,28 +8,35 @@ jdk:
 
 branches:
   only:
-    - master
+  - master
 
 before_script:
   - "if [ $TRAVIS_PULL_REQUEST = 'false' ]; then git checkout -qf $TRAVIS_BRANCH; fi"
 
 script:
-  - "if [ $TRAVIS_PULL_REQUEST = 'false' ]; then sbt ++$TRAVIS_SCALA_VERSION 'release with-defaults'; else sbt ++$TRAVIS_SCALA_VERSION test; fi"
-
-after_success:
+  - |
+    if [ $TRAVIS_PULL_REQUEST = 'false' ]; then
+      if [ $RELEASE_ON_PUSH = 'false' ]; then
+        sbt test coverageReport
+      else
+        sbt ++$TRAVIS_SCALA_VERSION 'release with-defaults'
+      fi
+    else
+      sbt test coverageReport
+    fi
   - find $HOME/.sbt -name "*.lock" | xargs rm
   - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
-  - "bash <(curl -s https://codecov.oncue.verizon.net/bash) -u https://codecov.oncue.verizon.net -r $TRAVIS_REPO_SLUG -t 1620fee1-1ee8-4457-865b-6545a55c4266"
 
 cache:
   directories:
     - $HOME/.ivy2/cache
     - $HOME/.sbt/boot/scala-$TRAVIS_SCALA_VERSION
 
-notifications:
-  email:
-    recipients:
-      - timothy.m.perrett@one.verizon.com
-      - daniel.spiewak@one.verizon.com
-    on_success: change
-    on_failure: always
+after_success:
+  - find $HOME/.sbt -name "*.lock" | xargs rm
+  - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
+  # - "bash <(curl -s https://codecov.io/bash) -r $TRAVIS_REPO_SLUG -t $CODECOV_TOKEN"
+
+# env:
+#   global:
+#     - 

@@ -1,22 +1,10 @@
-import verizon.build._
 
-common.settings
+scalaVersion in Global := crossScalaVersions.value.head
 
-publishing.ignore
+crossScalaVersions in Global := Seq("2.11.7", "2.10.4")
 
-ghrelease.settings
-
-teamName in Global := Some("inf")
-
-projectName in Global := Some("delorean")
-
-scalaVersion in Global := "2.11.7"
-
-crossScalaVersions in Global := Seq(scalaVersion.value, "2.10.6")
-
-// removing docs for now, as there are none
 lazy val delorean = project.in(file(".")).aggregate(core)
 
 lazy val core = project
 
-lazy val docs = project
+enablePlugins(DisablePublishingPlugin)
