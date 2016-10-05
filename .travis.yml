@@ -37,6 +37,7 @@ after_success:
   - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
   # - "bash <(curl -s https://codecov.io/bash) -r $TRAVIS_REPO_SLUG -t $CODECOV_TOKEN"
 
-# env:
-#   global:
-#     - 
+env:
+  global:
+    - secure: "H3W2JofszftdPoxll6Y8NFL7d3bblHP9ihiu1N73kvJwgtj/Oyt6Y2F4IBF7jgRFT9/2E8g8X1eOJ8MbZFYvOLyKAIBBQmXcIwE3ScfGPl5LyOwh6NQC1hUCKUZDUiMKmhbFuqazlTgFcva/9mnjpJbKX7VNZSRtnMg/abVEcAg="
+    - secure: "lEBD97v+ZHE67fEntCNXyEStuHdyHcHw3rzpZkRLPpBxN8r5MwZY0vMrzEL1CRrgayAKht++vg7l5TbZH/RhiN4Ks649MTd8wihTjZ79Z/9DfygQOtzIusXPncisL7lO51D9ifpnZFzuMwWlHDAMwq9TuTO5lPUQfZgT1OkTJDo="
