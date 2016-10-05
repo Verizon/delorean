@@ -1,6 +1,7 @@
 # Delorean
 
-[![Build Status](https://travis.oncue.verizon.net/iptv/delorean.svg?token=Lp2ZVD96vfT8T599xRfV&branch=master)](https://travis.oncue.verizon.net/iptv/delorean) [![codecov.io](https://codecov.oncue.verizon.net/github_enterprise/iptv/delorean/coverage.svg?branch=master)](https://codecov.oncue.verizon.net/github_enterprise/iptv/delorean?branch=master)
+[![Build Status](https://travis-ci.org/Verizon/delorean.svg?branch=master)](https://travis-ci.org/Verizon/delorean)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.verizon.delorean/core_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.verizon.delorean/core_2.11)
 
 Trivial library for correct and stable conversions between `Task` and `Future`.  To use:
 
