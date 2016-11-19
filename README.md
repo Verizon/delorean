@@ -1,5 +1,7 @@
 # Delorean
 
+![image](docs/img/logo.png)
+
 [![Build Status](https://travis-ci.org/Verizon/delorean.svg?branch=master)](https://travis-ci.org/Verizon/delorean)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.verizon.delorean/core_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.verizon.delorean/core_2.11)
 
