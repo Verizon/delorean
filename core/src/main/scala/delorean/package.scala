@@ -19,6 +19,7 @@ import scala.util.{Failure, Success}
 
 import scalaz.{-\/, \/-}
 import scalaz.concurrent.{Strategy, Task}
+import delorean.compatibility._
 
 package object delorean {
 
@@ -39,7 +40,7 @@ package object delorean {
     def unsafeToFuture(): Future[A] = {
       val p = Promise[A]()
 
-      self runAsync {
+      self unsafePerformAsync {
         case \/-(a) => p.complete(Success(a)); ()
         case -\/(t) => p.complete(Failure(t)); ()
       }

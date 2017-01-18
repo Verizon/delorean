@@ -25,6 +25,8 @@ import org.scalatest._
 import org.scalatest.prop._
 import org.scalacheck._
 
+import compatibility._
+
 class ConversionSpec extends FlatSpec with Matchers with PropertyChecks {
   import Arbitrary._
 
@@ -37,7 +39,7 @@ class ConversionSpec extends FlatSpec with Matchers with PropertyChecks {
       val f = Future(str)
       val t = f.toTask
 
-      t.run shouldEqual str
+      t.unsafePerformSync shouldEqual str
     }
   }
 
