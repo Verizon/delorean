@@ -9,12 +9,12 @@ Trivial library for correct and stable conversions between `Task` and `Future`. 
 
 For `scalaz-7.1.x`:
 ```sbt
-libraryDependencies += "io.verizon.delorean" %% "core" % "1.1.37-scalaz-7.1"
+libraryDependencies += "io.verizon.delorean" %% "core" % "1.2.40-scalaz-7.1"
 ```
 
 For `scalaz-7.2.x`:
 ```sbt
-libraryDependencies += "io.verizon.delorean" %% "core" % "1.1.37-scalaz-7.2"
+libraryDependencies += "io.verizon.delorean" %% "core" % "1.2.40-scalaz-7.2"
 ```
 
 Cross builds are available for 2.10.x, 2.11.x and for 2.12.x
