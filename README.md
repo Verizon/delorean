@@ -17,6 +17,8 @@ For `scalaz-7.2.x`:
 libraryDependencies += "io.verizon.delorean" %% "core" % "1.2.40-scalaz-7.2"
 ```
 
+`scalaz-7.0.x` is not [supported](https://github.com/Verizon/delorean/issues/4).
+
 Cross builds are available for 2.10.x, 2.11.x and for 2.12.x
 
 ## Usage
