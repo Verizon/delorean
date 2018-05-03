@@ -18,10 +18,10 @@ matrix:
       env: SCALAZ_VERSION=7.2.8
     # scala 2.12
     - jdk: oraclejdk8
-      scala: 2.12.1
+      scala: 2.12.6
       env: SCALAZ_VERSION=7.1.11
     - jdk: oraclejdk8
-      scala: 2.12.1
+      scala: 2.12.6
       env: SCALAZ_VERSION=7.2.8
 
 branches:
